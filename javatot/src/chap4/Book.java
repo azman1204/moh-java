@@ -15,7 +15,7 @@ public class Book {
     }
     
     public void info() {
-        
+
     }
     
     Book() {

@@ -1,3 +1,39 @@
+5 march 2019
+
+
+4 march 2019
+revision : 
+
+
+
+
+
+KiraGaji
+ - kira()
+
+AzmanGaji extends KiraGaji
+ - kira()
+
+
+method overloading
+ - method nama sama, param x sama
+
+method overriding
+ - replace method
+
+
+$age = 10;
+int age = 10;  // strong type
+
+
+Kuih Baulu
+Acuan  / loyang= class
+kuih = obj
+
+blue print vs result
+
+DEV-OP
+
 1. download JDK dari oracle website
   
 2. install
