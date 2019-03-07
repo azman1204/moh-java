@@ -1,9 +1,11 @@
+package model;
+
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class StudentModel extends Model {
-    int id;
-    String name;
+    public int id;
+    public String name;
     
     public StudentModel getOne(int studId) {
         String sql = "SELECT * FROM film WHERE film_id = " + studId;
@@ -11,7 +13,6 @@ public class StudentModel extends Model {
         StudentModel stud = new StudentModel();
         try {
             ResultSet rs = stmt.executeQuery(sql);
-            
             if (rs.next()) {
                 stud.id = rs.getInt("film_id");
                 stud.name = rs.getString("title");
@@ -23,7 +24,7 @@ public class StudentModel extends Model {
     }
     
     public static void main(String[] args) {
-        StudentModel stud = new StudentModel().getOne(2);
+        StudentModel stud = new StudentModel().getOne(6);
         System.out.println(stud.name);
     }
 }

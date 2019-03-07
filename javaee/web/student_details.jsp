@@ -1,10 +1,5 @@
-<%-- 
-    Document   : student_details
-    Created on : Mar 6, 2019, 3:48:05 PM
-    Author     : Azman
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.StudentModel" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,7 +7,15 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+        StudentModel stud = (StudentModel) request.getAttribute("stud");
+        out.print(stud.name);
+        out.print("<br>");
+        out.print(stud.id);
+        %>
         <h1>Student Details</h1>
-        Name : ${name}
+
+        <br>
+        ID : 
     </body>
 </html>
