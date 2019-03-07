@@ -16,6 +16,6 @@
         <h1>Student Details</h1>
 
         <br>
-        ID : 
+        ID : ${stud.name}
     </body>
 </html>

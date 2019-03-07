@@ -7,6 +7,10 @@ public class StudentModel extends Model {
     public int id;
     public String name;
     
+    public String getName() {
+        return this.name;
+    }
+    
     public StudentModel getOne(int studId) {
         String sql = "SELECT * FROM film WHERE film_id = " + studId;
         Statement stmt = this.getStmt();
