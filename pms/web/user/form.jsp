@@ -27,10 +27,17 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-1">Date</div>
+        <div class="col-md-4"><input type="text" id="dt"></div>
+    </div>
+    <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-4"><input type="submit" value="Save" class="btn btn-primary"></div>
     </div>
 </form>
 
+<script>
+$('#dt').datepicker();
+</script>
 
 <%@include file="../include/footer.jsp" %>
