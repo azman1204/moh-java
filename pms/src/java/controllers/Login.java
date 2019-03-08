@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import models.UserModel;
 
 @WebServlet(name = "Login", urlPatterns = {"/login"})
@@ -18,6 +19,9 @@ public class Login extends HttpServlet {
         UserModel user = new UserModel();
         if (user.isExist(staffId, pwd)) {
             // user wujud, set session, then go to project list
+            HttpSession sess = req.getSession();
+            sess.setAttribute("loggedin", true);
+            res.sendRedirect("/pms/project");
         } else {
             // user tak wujud, go back to login
             res.sendRedirect("/pms/pub/login.jsp?no");

@@ -1,3 +1,8 @@
+<%
+if(session.getAttribute("loggedin") == null) {
+    response.sendRedirect("/pms/pub/login.jsp");
+}
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
