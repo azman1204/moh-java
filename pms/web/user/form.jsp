@@ -1,7 +1,7 @@
 <%@include file="../include/header.jsp" %>
 
 <legend>Daftar Pengguna Sistem</legend>
-<form method="post" action="/pms/user&act=insert">
+<form method="post" action="/pms/user?act=insert">
     <div class="row">
         <div class="col-md-1">Name</div>
         <div class="col-md-4"><input type="text" name="name" class="form-control"></div>

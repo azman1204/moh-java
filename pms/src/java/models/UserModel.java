@@ -9,6 +9,15 @@ public class UserModel extends Model {
     private String pwd;
     private String role;
     private String name;
+    private String gender;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public String getName() {
         return name;
@@ -48,6 +57,19 @@ public class UserModel extends Model {
 
     public void setRole(String role) {
         this.role = role;
+    }
+    
+    public boolean insert() {
+        String sql = "INSERT INTO users(name, pwd, role, gender)" +
+                     "VALUES('"+this.name+"','"+ this.pwd+"','"+this.role+"','"+this.gender+"')";
+        try {
+            Statement stmt = this.getStmt();
+            stmt.execute(sql); // insert, update, delete guna execute()
+        } catch (Exception e) {
+            e.printStackTrace(); // print err msg to console
+            return false;
+        }
+        return true;
     }
     
     // return true jika staffid dan pwd matched
