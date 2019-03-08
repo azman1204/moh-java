@@ -12,6 +12,14 @@ import models.UserModel;
 
 @WebServlet(name = "Login", urlPatterns = {"/login"})
 public class Login extends HttpServlet {
+    // logout
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        session.invalidate(); // destroy session
+        res.sendRedirect("/pms/pub/login.jsp");
+    }
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         String staffId = req.getParameter("staff_id");
@@ -21,6 +29,7 @@ public class Login extends HttpServlet {
             // user wujud, set session, then go to project list
             HttpSession sess = req.getSession();
             sess.setAttribute("loggedin", true);
+            sess.setAttribute("user", user);// save an obj into session
             res.sendRedirect("/pms/project");
         } else {
             // user tak wujud, go back to login
