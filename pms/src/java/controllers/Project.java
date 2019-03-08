@@ -36,24 +36,36 @@ public class Project extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String title = request.getParameter("title");
-        String description = request.getParameter("description");
-        String id = request.getParameter("id");
-                
-        ProjectModel pro = new ProjectModel();
-        pro.setTitle(title);
-        pro.setDescription(description);
-        if (id.equals("0")) {
-            // insert
-            pro.insert();
+        String search = request.getParameter("search");
+        if (search != null) {
+            // search
+            String title = request.getParameter("title");
+            String desc = request.getParameter("description");
+            ProjectModel pro = new ProjectModel();
+            ArrayList list = pro.search(title, desc);
+            request.setAttribute("list", list);
+            request.getRequestDispatcher("project/list.jsp")
+                    .forward(request, response);
         } else {
-            // update
-            int id2 = Integer.parseInt(id);
-            pro.update(id2);
+            // insert or update
+            String title = request.getParameter("title");
+            String description = request.getParameter("description");
+            String id = request.getParameter("id");
+            ProjectModel pro = new ProjectModel();
+            pro.setTitle(title);
+            pro.setDescription(description);
+            if (id.equals("0")) {
+                // insert
+                pro.insert();
+            } else {
+                // update
+                int id2 = Integer.parseInt(id);
+                pro.update(id2);
+            }
+
+            //request.getRequestDispatcher("project").forward(request, response);
+            response.sendRedirect("project");
         }
-        
-        //request.getRequestDispatcher("project").forward(request, response);
-        response.sendRedirect("project");
     }
 
 }
