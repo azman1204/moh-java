@@ -35,14 +35,23 @@ public class Project extends HttpServlet {
     }
     
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String title = request.getParameter("title");
         String description = request.getParameter("description");
+        String id = request.getParameter("id");
+                
         ProjectModel pro = new ProjectModel();
         pro.setTitle(title);
         pro.setDescription(description);
-        pro.insert();
+        if (id.equals("0")) {
+            // insert
+            pro.insert();
+        } else {
+            // update
+            int id2 = Integer.parseInt(id);
+            pro.update(id2);
+        }
+        
         //request.getRequestDispatcher("project").forward(request, response);
         response.sendRedirect("project");
     }

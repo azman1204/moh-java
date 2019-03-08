@@ -8,6 +8,26 @@ public class ProjectModel extends Model {
     private String title ;
     private String description;
     
+    public ProjectModel() {
+        this.title = "";
+        this.description = "";
+    }
+    
+    public boolean update(int id) {
+        String sql = "UPDATE project SET "
+                   + "title = '" + this.title + "', "
+                   + "description = '" + this.description +"' "
+                   + "WHERE id = " + id;
+        try {
+            Statement stmt = this.getStmt();
+            stmt.execute(sql); // insert, update, delete guna execute()
+        } catch (Exception e) {
+            e.printStackTrace(); // print err msg to console
+            return false;
+        }
+        return true;
+    }
+    
     // return one record
     public ProjectModel getOne(int id) {
         String sql = "SELECT * FROM project WHERE id = " + id;
